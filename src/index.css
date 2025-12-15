@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --carbon-black: #20201e;
+  --dark-goldenrod: #a98242;
+  --bright-snow: #f7f7f7;
+  --palm-leaf: #a09863;
+  --stormy-teal: #0a646f;
+}
+
+/* Base Typography */
+@layer base {
+  body {
+    @apply font-sans antialiased bg-black text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-medium;
+  }
+
+  .logo-text {
+    @apply font-display font-bold;
+  }
+
+  .body-text {
+    @apply font-serif;
+  }
+}
+
+/* Custom styles */
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-gray-600 to-gray-800 hover:from-black hover:to-gray-800 text-white font-medium py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 backdrop-blur-sm;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-white text-white hover:bg-white hover:text-black font-medium py-3 px-8 rounded-full transition-all duration-300 backdrop-blur-sm;
+  }
+
+  .card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:bg-white/20;
+  }
+
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary-900 text-primary-900 hover:bg-primary-900 hover:text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl p-6 hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8)] transition-all duration-500 transform hover:scale-[1.02] hover:bg-white/10;
+  }
+
+  .card-dark {
+    @apply bg-neutral-800 text-white rounded-lg shadow-md border border-neutral-700 p-4;
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gradient-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 30% 20%,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 70% 80%,
+        rgba(168, 130, 66, 0.2) 0%,
+        transparent 50%
+      );
+    pointer-events: none;
+  }
+
+  .gradient-card {
+    @apply bg-gradient-to-r from-secondary-50 to-accent-50;
+  }
+
+  .text-brand {
+    @apply text-dark;
+  }
+
+  .bg-brand {
+    @apply bg-dark;
+  }
+
+  .border-brand {
+    @apply border-dark;
+  }
+
+  .focus-brand {
+    @apply focus:ring-2 focus:ring-dark focus:border-dark;
+  }
+}
