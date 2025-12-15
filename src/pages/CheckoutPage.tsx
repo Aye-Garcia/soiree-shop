@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useCart } from "../context/CartContext";
 import { Address, CartItem } from "../types";
 import MercadoPagoCheckout from "../components/MercadoPagoCheckout";
+import { formatPrice } from "../utils/formatPrice";
 
 export default function CheckoutPage() {
   const { items, total, itemsCount } = useCart();
@@ -246,7 +247,8 @@ export default function CheckoutPage() {
                     <img
                       src={item.product.image}
                       alt={item.product.name}
-                      className="w-12 h-12 object-cover rounded"
+                      className="w-12 h-12 object-contain bg-gray-900 rounded"
+                      style={{ imageRendering: "crisp-edges" }}
                     />
                     <div>
                       <p className="font-medium">{item.product.name}</p>
@@ -254,7 +256,7 @@ export default function CheckoutPage() {
                     </div>
                   </div>
                   <span className="font-medium">
-                    ${(item.product.price * item.quantity).toFixed(2)}
+                    {formatPrice(item.product.price * item.quantity)}
                   </span>
                 </div>
               ))}
@@ -263,7 +265,7 @@ export default function CheckoutPage() {
             <div className="space-y-2 border-t pt-4">
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span>${total.toFixed(2)}</span>
+                <span>{formatPrice(total)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Envío</span>
@@ -271,7 +273,7 @@ export default function CheckoutPage() {
               </div>
               <div className="flex justify-between font-semibold text-lg border-t pt-2">
                 <span>Total</span>
-                <span>${total.toFixed(2)}</span>
+                <span>{formatPrice(total)}</span>
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { useCart } from "../context/CartContext";
+import { formatPrice } from "../utils/formatPrice";
 import { CartItem } from "../types";
 
 export default function CartPage() {
@@ -36,7 +37,8 @@ export default function CartPage() {
                 <img
                   src={item.product.image}
                   alt={item.product.name}
-                  className="h-20 w-20 object-cover rounded-lg"
+                  className="h-20 w-20 object-contain bg-gray-900 rounded-lg"
+                  style={{ imageRendering: "crisp-edges" }}
                 />
 
                 <div className="flex-1">
@@ -52,7 +54,7 @@ export default function CartPage() {
                 <div className="text-right flex items-center space-x-4">
                   <div>
                     <p className="font-semibold">
-                      ${item.product.price.toFixed(2)}
+                      {formatPrice(item.product.price)}
                     </p>
                   </div>
                   <button
@@ -94,7 +96,7 @@ export default function CartPage() {
               <div className="border-t pt-3">
                 <div className="flex justify-between font-semibold text-lg">
                   <span>Total</span>
-                  <span>${total.toFixed(2)}</span>
+                  <span>{formatPrice(total)}</span>
                 </div>
               </div>
             </div>

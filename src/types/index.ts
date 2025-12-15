@@ -4,6 +4,7 @@ export interface Product {
   price: number;
   description: string;
   image: string;
+  images?: string[]; // Array opcional de imágenes adicionales
   category: string;
   stock: number;
 }

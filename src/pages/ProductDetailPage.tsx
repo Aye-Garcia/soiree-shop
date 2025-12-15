@@ -4,6 +4,7 @@ import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useProducts } from "../hooks/useProducts";
 import { useCart } from "../context/CartContext";
 import { useInventory } from "../context/InventoryContext";
+import { formatPrice } from "../utils/formatPrice";
 
 export default function ProductDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -11,6 +12,7 @@ export default function ProductDetailPage() {
   const { addToCart } = useCart();
   const { isProductSold } = useInventory();
   const [isAdding, setIsAdding] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const product = products.find((p) => p.id === id);
   const isSold = product ? isProductSold(product.id) : false;
@@ -50,13 +52,88 @@ export default function ProductDetailPage() {
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Product Image */}
-        <div>
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-96 object-cover rounded-lg"
-          />
+        {/* Product Image Gallery */}
+        <div className="space-y-4">
+          {/* Main Image */}
+          <div className="relative max-h-96 overflow-auto rounded-lg bg-gray-900">
+            <img
+              src={
+                product.images
+                  ? product.images[selectedImageIndex]
+                  : product.image
+              }
+              alt={`${product.name} - foto ${selectedImageIndex + 1}`}
+              className={`w-full ${
+                product.id === "1" &&
+                (product.images
+                  ? product.images[selectedImageIndex]
+                  : product.image) === "/calvin.png"
+                  ? "object-contain"
+                  : "object-cover"
+              } rounded-lg`}
+              style={{ imageRendering: "crisp-edges" }}
+            />
+
+            {/* Navigation arrows for multiple images */}
+            {product.images && product.images.length > 1 && (
+              <>
+                <button
+                  onClick={() =>
+                    setSelectedImageIndex((prev) =>
+                      prev === 0 ? product.images!.length - 1 : prev - 1
+                    )
+                  }
+                  className="absolute left-2 top-4 z-10 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-all"
+                >
+                  ←
+                </button>
+                <button
+                  onClick={() =>
+                    setSelectedImageIndex((prev) =>
+                      prev === product.images!.length - 1 ? 0 : prev + 1
+                    )
+                  }
+                  className="absolute right-2 top-4 z-10 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-all"
+                >
+                  →
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* Thumbnail Gallery */}
+          {product.images && product.images.length > 1 && (
+            <div className="flex space-x-2 overflow-x-auto">
+              {product.images.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedImageIndex(index)}
+                  className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                    selectedImageIndex === index
+                      ? "border-gold"
+                      : "border-gray-700 hover:border-gray-500"
+                  }`}
+                >
+                  <img
+                    src={image}
+                    alt={`${product.name} miniatura ${index + 1}`}
+                    className={`w-full h-full ${
+                      image === "/calvin.png"
+                        ? "object-contain"
+                        : "object-cover"
+                    } bg-gray-900`}
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* Image counter */}
+          {product.images && product.images.length > 1 && (
+            <div className="text-center text-sm text-gray-400">
+              Foto {selectedImageIndex + 1} de {product.images.length}
+            </div>
+          )}
         </div>
 
         {/* Product Info */}
@@ -67,7 +144,7 @@ export default function ProductDetailPage() {
           </div>
 
           <p className="text-3xl font-bold text-primary-600">
-            ${product.price.toFixed(2)}
+            {formatPrice(product.price)}
           </p>
 
           <p className="text-white">{product.description}</p>

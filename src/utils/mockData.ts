@@ -3,30 +3,34 @@ import { Product } from "../types";
 export const mockProducts: Product[] = [
   {
     id: "1",
-    name: "Vestido de Noche Elegante",
-    price: 1.99,
-    description:
-      "Un vestido de noche impresionante perfecto para ocasiones especiales. Confeccionado con tela premium y detalles exquisitos.",
-    image:
-      "https://images.unsplash.com/photo-1566479179817-c0c4ae0e2dc6?w=400&h=600&fit=crop",
+    name: "Vestido Cocktail Elegante, tipo Calvin",
+    price: 45000,
+    description: "Busto: 90cm, Cintura: 72cm, Cadera: 93cm.",
+    image: "/calvin.png",
+    images: [
+      "/calvin.png",
+      "/calvin1.jpg",
+      "/calvin2.jpg",
+      "/calvin3.jpg",
+      "/calvin4.png",
+      "/calvin5.png",
+    ],
     category: "ropa",
     stock: 1,
   },
   {
     id: "2",
     name: "Bolso de Cuero Premium",
-    price: 2.99,
-    description:
-      "Bolso de cuero genuino hecho a mano con compartimentos múltiples y diseño elegante.",
-    image:
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=600&fit=crop",
+    price: 30000,
+    description: `Bolso de compartimentos múltiples, uno con cierre. Correa ajustable.`,
+    image: "/bolso1.jpg",
     category: "accesorios",
     stock: 1,
   },
   {
     id: "3",
     name: "Diamond Stud Earrings",
-    price: 4.99,
+    price: 65000,
     description:
       "Aretes de diamante clásicos con engaste de oro blanco de 14k. Perfectos para uso diario o ocasiones especiales.",
     image:
@@ -37,7 +41,7 @@ export const mockProducts: Product[] = [
   {
     id: "4",
     name: "Silk Scarf Collection",
-    price: 1.89,
+    price: 32000,
     description:
       "Pañuelo de seda pura con patrones únicos hechos a mano. Versátil y elegante para cualquier atuendo.",
     image:
@@ -48,7 +52,7 @@ export const mockProducts: Product[] = [
   {
     id: "5",
     name: "Designer High Heels",
-    price: 3.49,
+    price: 58000,
     description:
       "Zapatos de tacón alto diseñados por artesanos europeos. Comodidad y estilo en cada paso.",
     image:
@@ -59,7 +63,7 @@ export const mockProducts: Product[] = [
   {
     id: "6",
     name: "Vintage Leather Jacket",
-    price: 4.89,
+    price: 78000,
     description:
       "Chaqueta de cuero vintage auténtica con forro de seda. Un clásico atemporal que nunca pasa de moda.",
     image:
@@ -70,7 +74,7 @@ export const mockProducts: Product[] = [
   {
     id: "7",
     name: "Pearl Necklace Set",
-    price: 2.79,
+    price: 42000,
     description:
       "Conjunto de collar y aretes de perlas cultivadas. Elegancia clásica para la mujer moderna.",
     image:
@@ -81,7 +85,7 @@ export const mockProducts: Product[] = [
   {
     id: "8",
     name: "Cashmere Sweater",
-    price: 3.99,
+    price: 68000,
     description:
       "Suéter de cashmere 100% puro con tejido artesanal. Suavidad y calidez incomparables.",
     image:

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
 import { useInventory } from "../context/InventoryContext";
+import { formatPrice } from "../utils/formatPrice";
 import { CartItem } from "../types";
 
 interface MercadoPagoCheckoutProps {
@@ -25,7 +26,7 @@ export default function MercadoPagoCheckout({
     const orderItems = items
       .map(
         (item: CartItem) =>
-          `• ${item.product.name} - $${item.product.price.toFixed(2)}`
+          `• ${item.product.name} - ${formatPrice(item.product.price)}`
       )
       .join("\n");
 
@@ -42,7 +43,7 @@ Tel: ${orderData.shippingAddress.phone}`;
 *Productos:*
 ${orderItems}
 
-*Total: $${total.toFixed(2)}*
+*Total: ${formatPrice(total)}*
 ${shippingInfo}
 
 Hola! Me interesa completar esta compra. ¿Podrías enviarme el link de pago?`;
@@ -109,12 +110,12 @@ Hola! Me interesa completar esta compra. ¿Podrías enviarme el link de pago?`;
               <span>
                 {item.product.name} x{item.quantity}
               </span>
-              <span>${(item.product.price * item.quantity).toFixed(2)}</span>
+              <span>{formatPrice(item.product.price * item.quantity)}</span>
             </div>
           ))}
           <div className="border-t pt-2 flex justify-between font-semibold">
             <span>Total:</span>
-            <span>${total.toFixed(2)}</span>
+            <span>{formatPrice(total)}</span>
           </div>
         </div>
       </div>

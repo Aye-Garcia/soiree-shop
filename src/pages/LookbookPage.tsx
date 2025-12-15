@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useProducts } from "../hooks/useProducts";
+import { formatPrice } from "../utils/formatPrice";
 import ProductCard from "../components/ProductCard";
 
 export default function LookbookPage() {
@@ -124,14 +125,15 @@ export default function LookbookPage() {
                             <img
                               src={product.image}
                               alt={product.name}
-                              className="w-12 h-12 object-cover rounded-lg"
+                              className="w-12 h-12 object-contain bg-gray-900 rounded-lg"
+                              style={{ imageRendering: "crisp-edges" }}
                             />
                             <div className="flex-1 min-w-0">
                               <h4 className="text-white font-medium text-sm truncate">
                                 {product.name}
                               </h4>
                               <p className="text-gold text-sm">
-                                ${product.price.toFixed(2)}
+                                {formatPrice(product.price)}
                               </p>
                             </div>
                           </div>

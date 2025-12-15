@@ -110,4 +110,17 @@
   .focus-brand {
     @apply focus:ring-2 focus:ring-dark focus:border-dark;
   }
+
+  /* Optimizaciones para imágenes */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  /* Mejora específica para imágenes de productos */
+  .product-image {
+    image-rendering: high-quality;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
 }

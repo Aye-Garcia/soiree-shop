@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Product } from "../types";
 import { useCart } from "../context/CartContext";
 import { useInventory } from "../context/InventoryContext";
+import { formatPrice } from "../utils/formatPrice";
 
 interface ProductCardProps {
   product: Product;
@@ -29,7 +30,11 @@ export default function ProductCard({ product }: ProductCardProps) {
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-48 object-cover rounded-t-lg mb-4"
+          className={`w-full h-48 ${
+            product.id === "1" ? "object-contain" : "object-cover"
+          } bg-gray-900 rounded-t-lg mb-4`}
+          loading="lazy"
+          style={{ imageRendering: "crisp-edges" }}
         />
       </Link>
 
@@ -46,7 +51,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         <div className="flex items-center justify-between pt-2">
           <span className="text-xl font-bold text-brand text-light">
-            ${product.price.toFixed(2)}
+            {formatPrice(product.price)}
           </span>
           <button
             onClick={handleAddToCart}
