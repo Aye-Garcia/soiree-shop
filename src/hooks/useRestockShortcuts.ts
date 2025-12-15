@@ -14,7 +14,7 @@ export function useRestockShortcuts() {
 
   useEffect(() => {
     // Solo en desarrollo
-    if (typeof process !== 'undefined' && process.env.NODE_ENV !== "development") return;
+    if (!import.meta.env.DEV) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       // Debe presionar Ctrl + Alt

@@ -12,7 +12,7 @@ export default function DevRestockOverlay() {
   const { products } = useProducts();
 
   // Solo en desarrollo
-  if (typeof process !== 'undefined' && process.env.NODE_ENV !== "development") return null;
+  if (!import.meta.env.DEV) return null;
 
   // Escuchar Ctrl + Alt + D para toggle
   React.useEffect(() => {

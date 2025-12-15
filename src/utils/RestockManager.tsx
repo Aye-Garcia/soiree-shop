@@ -12,7 +12,7 @@ import DevRestockOverlay from "../components/DevRestockOverlay";
  */
 export default function RestockManager() {
   // Solo en desarrollo
-  if (typeof process !== 'undefined' && process.env.NODE_ENV !== "development") return null;
+  if (!import.meta.env.DEV) return null;
 
   // Activar todos los sistemas
   useRestockShortcuts();
