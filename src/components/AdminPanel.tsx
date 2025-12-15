@@ -1,4 +1,3 @@
-import React from "react";
 import { useInventory } from "../context/InventoryContext";
 import { useProducts } from "../hooks/useProducts";
 

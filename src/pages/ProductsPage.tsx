@@ -27,7 +27,7 @@ export default function ProductsPage() {
         case "price-high":
           return b.price - a.price;
         case "rating":
-          return b.rating - a.rating;
+          return 0; // Rating removido del sistema
         default:
           return a.name.localeCompare(b.name);
       }

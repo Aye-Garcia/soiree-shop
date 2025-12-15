@@ -1,4 +1,3 @@
-import React from "react";
 import { useRestockShortcuts } from "../hooks/useRestockShortcuts";
 import { useURLRestock } from "../hooks/useURLRestock";
 import DevRestockOverlay from "../components/DevRestockOverlay";
@@ -13,7 +12,7 @@ import DevRestockOverlay from "../components/DevRestockOverlay";
  */
 export default function RestockManager() {
   // Solo en desarrollo
-  if (process.env.NODE_ENV !== "development") return null;
+  if (typeof process !== 'undefined' && process.env.NODE_ENV !== "development") return null;
 
   // Activar todos los sistemas
   useRestockShortcuts();

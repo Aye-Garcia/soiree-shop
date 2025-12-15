@@ -14,7 +14,7 @@ export function useURLRestock() {
 
   useEffect(() => {
     // Solo en desarrollo
-    if (process.env.NODE_ENV !== "development") return;
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== "development") return;
 
     const urlParams = new URLSearchParams(window.location.search);
     const restockParam = urlParams.get("restock");

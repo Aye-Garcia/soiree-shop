@@ -28,7 +28,7 @@ export function InventoryProvider({ children }: { children: React.ReactNode }) {
     return new Set();
   });
 
-  const [isInitialized, setIsInitialized] = useState(true); // Marcar como inicializado inmediatamente
+  const [isInitialized] = useState(true); // Marcar como inicializado inmediatamente
 
   // Guardar productos vendidos en localStorage cuando cambien
   useEffect(() => {
